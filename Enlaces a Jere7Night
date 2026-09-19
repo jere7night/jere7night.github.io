@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JERE7NIGHT | LIVE TO CREATE</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <style>
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+            --bg: #070707;
+            --bg-secondary: #0d0d0d;
+            --card: rgba(18, 18, 18, 0.82);
+
+            --white: #ffffff;
+            --text: #d9d9d9;
+            --muted: #8d8d8d;
+
+            --green: #39ff14;
+            --purple: #b026ff;
+
+            --border: rgba(255, 255, 255, 0.10);
+
+            --green-glow:
+                0 0 5px rgba(57, 255, 20, .8),
+                0 0 15px rgba(57, 255, 20, .45),
+                0 0 35px rgba(57, 255, 20, .18);
+
+            --purple-glow:
+                0 0 5px rgba(176, 38, 255, .8),
+                0 0 15px rgba(176, 38, 255, .45),
+                0 0 35px rgba(176, 38, 255, .18);
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: 'Montserrat', sans-serif;
+
+            color: var(--white);
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(176, 38, 255, .13),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 0% 70%,
+                    rgba(57, 255, 20, .06),
+                    transparent 30%
+                ),
+                var(--bg);
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================================
+           CYBER GRID BACKGROUND
+        ========================================================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            opacity: .17;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 255, 255, .025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, .025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 35px 35px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 90%
+                );
+
+            z-index: -2;
+        }
+
+
+        /* =========================================================
+           MAIN CONTAINER
+        ========================================================= */
+
+        .page {
+            width: 100%;
+            max-width: 620px;
+
+            margin: 0 auto;
+
+            padding:
+                35px 18px
+                45px;
+        }
+
+
+        /* =========================================================
+           PROFILE
+        ========================================================= */
+
+        .profile {
+            text-align: center;
+        }
+
+
+        /* =========================================================
+           AVATAR
+        ========================================================= */
+
+        .avatar-wrapper {
+            position: relative;
+
+            width: 125px;
+            height: 125px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* Green / purple rotating ring */
+
+        .avatar-wrapper::before {
+            content: "";
+
+            position: absolute;
+
+            inset: -5px;
+
+            border-radius: 50%;
+
+            background:
+                conic-gradient(
+                    from 0deg,
+                    var(--green),
+                    transparent 28%,
+                    var(--purple),
+                    transparent 70%,
+                    var(--green)
+                );
+
+            animation: rotateRing 5s linear infinite;
+
+            filter:
+                drop-shadow(0 0 5px var(--green))
+                drop-shadow(0 0 12px var(--purple));
+        }
+
+
+        /* Dark center */
+
+        .avatar-wrapper::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 2px;
+
+            border-radius: 50%;
+
+            background: #050505;
+
+            z-index: 0;
+        }
+
+
+        .avatar {
+            position: relative;
+
+            width: 112px;
+            height: 112px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 3px solid #090909;
+
+            z-index: 1;
+
+            box-shadow:
+                0 0 15px rgba(176, 38, 255, .45),
+                0 0 30px rgba(57, 255, 20, .20);
+
+            background: #111;
+        }
+
+
+        @keyframes rotateRing {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================================================
+           NAME
+        ========================================================= */
+
+        .name {
+            position: relative;
+
+            display: inline-block;
+
+            font-family: 'Orbitron', sans-serif;
+
+            font-size: clamp(2rem, 9vw, 3rem);
+
+            font-weight: 900;
+
+            letter-spacing: 4px;
+
+            line-height: 1.1;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--green),
+                    #ffffff 42%,
+                    var(--purple)
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            filter:
+                drop-shadow(0 0 5px rgba(57,255,20,.35))
+                drop-shadow(0 0 12px rgba(176,38,255,.25));
+        }
+
+
+        /* =========================================================
+           TAGLINE
+        ========================================================= */
+
+        .tagline {
+            margin-top: 7px;
+
+            font-family: 'Orbitron', sans-serif;
+
+            font-size: .72rem;
+
+            font-weight: 700;
+
+            letter-spacing: 5px;
+
+            color: var(--green);
+
+            text-shadow: 0 0 8px rgba(57,255,20,.7);
+        }
+
+
+        /* =========================================================
+           WELCOME MESSAGE
+        ========================================================= */
+
+        .bio {
+            max-width: 530px;
+
+            margin: 20px auto 30px;
+
+            color: var(--text);
+
+            font-size: .88rem;
+
+            line-height: 1.75;
+
+            font-weight: 400;
+        }
+
+        .bio strong {
+            color: var(--white);
+
+            font-weight: 700;
+
+            text-shadow:
+                0 0 8px rgba(176,38,255,.35);
+        }
+
+
+        /* =========================================================
+           SOCIAL MINI BAR
+        ========================================================= */
+
+        .social-mini {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 22px;
+
+            margin-bottom: 28px;
+        }
+
+        .social-mini a {
+            width: 30px;
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #bcbcbc;
+
+            font-size: 1.15rem;
+
+            text-decoration: none;
+
+            transition:
+                color .25s ease,
+                transform .25s ease,
+                filter .25s ease;
+        }
+
+        .social-mini a:hover {
+            color: var(--green);
+
+            transform: translateY(-3px);
+
+            filter:
+                drop-shadow(0 0 5px var(--green));
+        }
+
+
+        /* =========================================================
+           LINKS
+        ========================================================= */
+
+        .links {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 13px;
+        }
+
+
+        .link {
+            position: relative;
+
+            min-height: 64px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 10px 58px 10px 18px;
+
+            color: var(--white);
+
+            text-decoration: none;
+
+            background:
+                linear-gradient(
+                    105deg,
+                    rgba(25,25,25,.95),
+                    rgba(13,13,13,.92)
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: 13px;
+
+            overflow: hidden;
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease,
+                background .25s ease;
+        }
+
+
+        /* Cyber accent line */
+
+        .link::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 3px;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--green),
+                    var(--purple)
+                );
+
+            box-shadow:
+                0 0 8px var(--green),
+                0 0 12px var(--purple);
+
+            opacity: .7;
+
+            transition:
+                width .25s ease,
+                opacity .25s ease;
+        }
+
+
+        /* Subtle shine */
+
+        .link::after {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 80%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.07),
+                    transparent
+                );
+
+            transform: skewX(-20deg);
+
+            transition: left .6s ease;
+
+            pointer-events: none;
+        }
+
+
+        .link:hover {
+            transform: translateY(-3px) scale(1.01);
+
+            border-color: rgba(57,255,20,.65);
+
+            background:
+                linear-gradient(
+                    105deg,
+                    rgba(25,35,25,.98),
+                    rgba(20,14,25,.98)
+                );
+
+            box-shadow:
+                0 0 7px rgba(57,255,20,.30),
+                0 0 22px rgba(176,38,255,.16),
+                inset 0 0 18px rgba(57,255,20,.025);
+        }
+
+
+        .link:hover::before {
+            width: 5px;
+
+            opacity: 1;
+        }
+
+
+        .link:hover::after {
+            left: 130%;
+        }
+
+
+        /* =========================================================
+           ICON
+        ========================================================= */
+
+        .icon {
+            width: 38px;
+            min-width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-right: 14px;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.035);
+
+            font-size: 1.35rem;
+
+            color: #d5d5d5;
+
+            transition:
+                color .25s ease,
+                filter .25s ease,
+                transform .25s ease;
+        }
+
+
+        .link:hover .icon {
+            color: var(--green);
+
+            transform: scale(1.08);
+
+            filter:
+                drop-shadow(0 0 5px var(--green))
+                drop-shadow(0 0 10px var(--purple));
+        }
+
+
+        /* =========================================================
+           LINK TEXT
+        ========================================================= */
+
+        .link-content {
+            flex: 1;
+
+            text-align: left;
+        }
+
+
+        .link-title {
+            display: block;
+
+            font-family: 'Orbitron', sans-serif;
+
+            font-size: .86rem;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            color: var(--white);
+
+            transition:
+                color .25s ease,
+                text-shadow .25s ease;
+        }
+
+
+        .link-description {
+            display: block;
+
+            margin-top: 3px;
+
+            color: var(--muted);
+
+            font-size: .68rem;
+
+            line-height: 1.35;
+        }
+
+
+        .link:hover .link-title {
+            color: var(--green);
+
+            text-shadow:
+                0 0 8px rgba(57,255,20,.55);
+        }
+
+
+
+        /* KICK LIVE STATUS */
+        .kick-status {
+            position: absolute;
+            right: 55px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff3030;
+            font-family: 'Orbitron', sans-serif;
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 7px rgba(255,48,48,.55);
+        }
+
+        /* =========================================================
+           ARROW
+        ========================================================= */
+
+        .arrow {
+            position: absolute;
+
+            right: 18px;
+
+            color: #777;
+
+            font-size: .8rem;
+
+            transition:
+                color .25s ease,
+                transform .25s ease;
+        }
+
+
+        .link:hover .arrow {
+            color: var(--green);
+
+            transform: translateX(4px);
+
+            text-shadow:
+                0 0 8px var(--green);
+        }
+
+
+        /* =========================================================
+           KICK SVG
+        ========================================================= */
+
+        .kick-icon {
+            width: 24px;
+            height: 24px;
+
+            fill: currentColor;
+
+            transition:
+                filter .25s ease;
+        }
+
+        .link:hover .kick-icon {
+            filter:
+                drop-shadow(0 0 4px var(--green))
+                drop-shadow(0 0 8px var(--purple));
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer {
+            margin-top: 34px;
+
+            text-align: center;
+
+            color: #555;
+
+            font-family: 'Orbitron', sans-serif;
+
+            font-size: .58rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .footer span {
+            color: var(--green);
+
+            text-shadow:
+                0 0 7px rgba(57,255,20,.55);
+        }
+
+
+        /* =========================================================
+           DESKTOP
+        ========================================================= */
+
+        @media (min-width: 700px) {
+
+            .page {
+                padding-top: 55px;
+            }
+
+            .link {
+                min-height: 70px;
+            }
+
+            .link-title {
+                font-size: .9rem;
+            }
+
+            .link-description {
+                font-size: .7rem;
+            }
+
+            .links {
+                gap: 15px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <main class="page">
+
+        <!-- =====================================================
+             PERFIL
+        ====================================================== -->
+
+        <header class="profile">
+
+            <!--
+                REEMPLAZA ESTA RUTA POR TU AVATAR:
+
+                images/avatar.png
+
+                También puedes utilizar:
+                images/logo.jpg
+                images/jere7night.webp
+            -->
+
+            <div class="avatar-wrapper">
+                <img class="avatar" src="avatar.png" alt="JERE7NIGHT">
+            </div>
+
+
+            <!-- NOMBRE -->
+
+            <h1 class="name">
+                JERE7NIGHT
+            </h1>
+
+
+            <!-- LEMA -->
+
+            <div class="tagline">
+                LIVE TO CREATE
+            </div>
+
+
+            <!-- BIO -->
+
+            <p class="bio">
+                ¡Bienvenid@ a mi mundo! 🚀
+                Soy <strong>Jere7Night</strong>.
+                Aquí vivo para crear, jugar y compartir mi pasión con todos ustedes.
+                Únete a mi comunidad, disfruta de los directos y
+                ¡hagamos historia juntos!
+                <strong>Apóyame en mis links de abajo 👇</strong>
+            </p>
+
+
+            <!-- MINI ICONOS -->
+
+            <nav class="social-mini" aria-label="Redes sociales">
+
+                <a
+                    href="https://discord.gg/AjdTcSYw7N"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Discord"
+                >
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+
+                <a
+                    href="https://kick.com/jere7night"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Kick"
+                >
+                    <svg
+                        class="kick-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M4 3h16v5h-5v3h5v5h-6v5H9v-5H4V3zm5 5v8h2v-3h2V8H9z"/>
+                    </svg>
+                </a>
+
+                <a
+                    href="https://www.tiktok.com/@jere7night"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="TikTok"
+                >
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+                <a
+                    href="https://www.youtube.com/@Jere7Night"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                >
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a
+                    href="https://www.instagram.com/jere7night0/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                >
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a
+                    href="https://x.com/jere7night"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X"
+                >
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+            </nav>
+
+        </header>
+
+
+        <!-- =====================================================
+             ENLACES
+        ====================================================== -->
+
+        <section class="links" aria-label="Enlaces de JERE7NIGHT">
+
+
+            <!-- 1. DISCORD -->
+
+            <a
+                class="link"
+                href="https://discord.gg/AjdTcSYw7N"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+                    <i class="fa-brands fa-discord"></i>
+                </div>
+
+                <div class="link-content">
+                    <span class="link-title">
+                        Discord
+                    </span>
+
+                    <span class="link-description">
+                        Únete a la comunidad de JERE7NIGHT
+                    </span>
+                </div>
+
+                <span class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </a>
+
+
+            <!-- 2. KICK -->
+
+            <a
+                class="link"
+                href="https://kick.com/jere7night"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+
+                    <svg
+                        class="kick-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M4 3h16v5h-5v3h5v5h-6v5H9v-5H4V3zm5 5v8h2v-3h2V8H9z"/>
+                    </svg>
+
+                </div>
+
+                <div class="link-content">
+                    <span class="link-title">
+                        Kick
+                    </span>
+
+                    <span class="link-description">
+                        Directos, gaming y mucho más
+                    </span>
+                </div>
+
+                <span class="kick-status">
+                    Offline
+                </span>
+
+                <span class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </a>
+
+
+            <!-- 3. TIKTOK -->
+
+            <a
+                class="link"
+                href="https://www.tiktok.com/@jere7night"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+                    <i class="fa-brands fa-tiktok"></i>
+                </div>
+
+                <div class="link-content">
+                    <span class="link-title">
+                        TikTok
+                    </span>
+
+                    <span class="link-description">
+                        Clips, curiosidades y contenido corto
+                    </span>
+                </div>
+
+                <span class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </a>
+
+
+            <!-- 4. YOUTUBE -->
+
+            <a
+                class="link"
+                href="https://www.youtube.com/@Jere7Night"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+
+                <div class="link-content">
+                    <span class="link-title">
+                        YouTube
+                    </span>
+
+                    <span class="link-description">
+                        Videos, gameplays y contenido completo
+                    </span>
+                </div>
+
+                <span class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </a>
+
+
+            <!-- 5. INSTAGRAM -->
+
+            <a
+                class="link"
+                href="https://www.instagram.com/jere7night0/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+
+                <div class="link-content">
+                    <span class="link-title">
+                        Instagram
+                    </span>
+
+                    <span class="link-description">
+                        Fotos, novedades y momentos del día a día
+                    </span>
+                </div>
+
+                <span class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </a>
+
+
+            <!-- 6. WHATSAPP -->
+
+            <a
+                class="link"
+                href="https://www.whatsapp.com/channel/0029VbDYuhoDJ6H3TAgn213F"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+
+                <div class="link-content">
+                    <span class="link-title">
+                        ¡Únete a mi canal de WhatsApp!
+                    </span>
+
+                    <span class="link-description">
+                        Noticias, avisos y contenido exclusivo
+                    </span>
+                </div>
+
+                <span class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </a>
+
+
+            <!-- 7. X -->
+
+            <a
+                class="link"
+                href="https://x.com/jere7night"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </div>
+
+                <div class="link-content">
+                    <span class="link-title">
+                        X
+                    </span>
+
+                    <span class="link-description">
+                        Noticias, pensamientos y novedades
+                    </span>
+                </div>
+
+                <span class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </a>
+
+        
+            <!-- 8. PAYPAL -->
+
+            <a
+                class="link"
+                href="https://paypal.com/paypalme/jere7night00"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="PayPal"
+            >
+
+                <div class="icon">
+                    <i class="fa-brands fa-paypal"></i>
+                </div>
+
+                <div class="link-content">
+                    <span class="link-title">
+                        Paypal
+                    </span>
+
+                    <span class="link-description">
+                        Para mejorar la PC
+                    </span>
+                </div>
+
+                <span class="arrow">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+
+            </a>
+
+</section>
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <footer class="footer">
+            <span>JERE7NIGHT</span>
+            &nbsp;•&nbsp;
+            LIVE TO CREATE
+        </footer>
+
+    </main>
+
+</body>
+</html>
